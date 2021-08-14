@@ -877,8 +877,28 @@ class _TypeAheadFieldState<T> extends State<TypeAheadField<T>>
         }
       }
 
+      double h = _suggestionsBox!.textBoxHeight;
+      if (widget.suggestionsBoxDecoration.constraints != null) {
+        if (widget.suggestionsBoxDecoration.constraints!.minHeight != 0.0 &&
+            widget.suggestionsBoxDecoration.constraints!.maxHeight !=
+                double.infinity) {
+          h = (widget.suggestionsBoxDecoration.constraints!.minHeight +
+                  widget.suggestionsBoxDecoration.constraints!.maxHeight) /
+              2;
+        } else if (widget.suggestionsBoxDecoration.constraints!.minHeight !=
+                0.0 &&
+            widget.suggestionsBoxDecoration.constraints!.minHeight > h) {
+          h = widget.suggestionsBoxDecoration.constraints!.minHeight;
+        } else if (widget.suggestionsBoxDecoration.constraints!.maxHeight !=
+                double.infinity &&
+            widget.suggestionsBoxDecoration.constraints!.maxHeight < h) {
+          h = widget.suggestionsBoxDecoration.constraints!.maxHeight;
+        }
+      }
+
       return Positioned(
         width: w,
+        height: h,
         child: CompositedTransformFollower(
           link: this._layerLink,
           showWhenUnlinked: false,
