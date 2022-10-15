@@ -735,7 +735,7 @@ class _TypeAheadFieldState<T> extends State<TypeAheadField<T>>
   void dispose() {
     this._suggestionsBox!.close();
     this._suggestionsBox!.widgetMounted = false;
-    WidgetsBinding.instance!.removeObserver(this);
+    WidgetsBinding.instance.removeObserver(this);
     if (supportKeyboadChange) {
       _keyboardVisibilitySubscription.cancel();
     }
@@ -750,7 +750,7 @@ class _TypeAheadFieldState<T> extends State<TypeAheadField<T>>
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance!.addObserver(this);
+    WidgetsBinding.instance.addObserver(this);
 
     if (widget.textFieldConfiguration.controller == null) {
       this._textEditingController = TextEditingController();
@@ -786,7 +786,7 @@ class _TypeAheadFieldState<T> extends State<TypeAheadField<T>>
       });
     }
 
-    WidgetsBinding.instance!.addPostFrameCallback((duration) {
+    WidgetsBinding.instance.addPostFrameCallback((duration) {
       if (mounted) {
         this._initOverlayEntry();
         // calculate initial suggestions list size
@@ -917,7 +917,7 @@ class _TypeAheadFieldState<T> extends State<TypeAheadField<T>>
         autocorrect: widget.textFieldConfiguration.autocorrect,
         maxLines: widget.textFieldConfiguration.maxLines,
         minLines: widget.textFieldConfiguration.minLines,
-        maxLength: widget.textFieldConfiguration.maxLength, 
+        maxLength: widget.textFieldConfiguration.maxLength,
         obscureText: widget.textFieldConfiguration.obscureText,
         onChanged: widget.textFieldConfiguration.onChanged,
         onSubmitted: widget.textFieldConfiguration.onSubmitted,

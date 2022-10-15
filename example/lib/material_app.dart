@@ -122,12 +122,12 @@ class _FormExampleState extends State<FormExample> {
             SizedBox(
               height: 10.0,
             ),
-            RaisedButton(
+            ElevatedButton(
               child: Text('Submit'),
               onPressed: () {
                 if (this._formKey.currentState!.validate()) {
                   this._formKey.currentState!.save();
-                  Scaffold.of(context).showSnackBar(
+                  ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(
                       content:
                           Text('Your Favorite City is ${this._selectedCity}'),
